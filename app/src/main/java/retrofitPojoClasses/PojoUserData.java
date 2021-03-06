@@ -1,0 +1,5 @@
+package retrofitPojoClasses;
+
+class PojoUserData {
+
+}

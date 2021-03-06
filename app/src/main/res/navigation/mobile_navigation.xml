@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_users">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.retrofittesting.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_users"
+        android:name="com.example.retrofittesting.ui.users.PeopleFragment"
+        android:label="@string/title_people"
+        tools:layout="@layout/fragment_users" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.retrofittesting.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_albums"
+        android:name="com.example.retrofittesting.ui.posts.PostsFragment"
+        android:label="@string/title_posts"
+        tools:layout="@layout/fragment_albums" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.retrofittesting.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_posts"
+        android:name="com.example.retrofittesting.ui.albums.AlbumsFragment"
+        android:label="@string/title_albums"
+        tools:layout="@layout/fragment_posts" />
 </navigation>
