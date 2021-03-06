@@ -13,6 +13,7 @@ import com.example.retrofittesting.R;
 
 import java.util.List;
 
+import mechanics.RandomDate;
 import retrofitPojoClasses.PojoPostData;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
@@ -36,7 +37,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         PojoPostData state = data.get(position);
         holder.textTitle.setText(state.getTitle());
         holder.textBody.setText(state.getBody());
-        //todo доделать дату
+        holder.textDate.setText(RandomDate.getRandomDate());
     }
 
     @Override

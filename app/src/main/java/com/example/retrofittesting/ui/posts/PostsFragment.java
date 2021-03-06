@@ -1,7 +1,5 @@
 package com.example.retrofittesting.ui.posts;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.retrofittesting.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofitPojoClasses.PojoPostData;
 
@@ -80,32 +75,24 @@ public class PostsFragment extends Fragment implements PostsInterface {
 
     @Override
     public void showLoading() {
-//        if (loadingLayout.getVisibility() != View.VISIBLE){
             dataLayout.setVisibility(View.GONE);
             loadingLayout.setVisibility(View.VISIBLE);
-//        }
-//        if (loadingProgressBar.getVisibility() != View.VISIBLE){
             loadingProgressBar.setVisibility(View.VISIBLE);
             textViewLoadingStatus.setVisibility(View.INVISIBLE);
-//        }
+
     }
 
     @Override
     public void hideLoading() {
-//        if (loadingLayout.getVisibility() != View.VISIBLE){
         dataLayout.setVisibility(View.VISIBLE);
         loadingLayout.setVisibility(View.GONE);
-//        }
-//        if (loadingProgressBar.getVisibility() != View.VISIBLE){
         loadingProgressBar.setVisibility(View.VISIBLE);
         textViewLoadingStatus.setVisibility(View.INVISIBLE);
-//        }
     }
 
     @Override
-    public void showData() {
-        listData.add(new PojoPostData(0,0,"Obama","Is monkey"));
-        listData.add(new PojoPostData(0,0,"Putin","Is god"));
+    public void showData(ArrayList<PojoPostData> data) {
+        listData.addAll(data);
     }
 
     @Override

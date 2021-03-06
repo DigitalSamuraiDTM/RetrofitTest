@@ -3,9 +3,10 @@ package com.example.retrofittesting.ui.posts;
 import android.util.Log;
 
 import com.example.retrofittesting.BasePresenterInterface;
-import com.example.retrofittesting.InternetAccess;
-import com.example.retrofittesting.RetrofitService;
+import mechanics.InternetAccess;
+import mechanics.retrofit.RetrofitService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,12 +27,12 @@ class PostsPresenter implements BasePresenterInterface {
             RetrofitService.getInstance().getJSONApi().getPosts().enqueue(new Callback<List<PojoPostData>>() {
                 @Override
                 public void onResponse(Call<List<PojoPostData>> call, Response<List<PojoPostData>> response) {
-                    List<PojoPostData> data = response.body();
+                    ArrayList<PojoPostData> data = (ArrayList<PojoPostData>) response.body();
                     for (int i = 0; i < data.size(); i++) {
                         Log.d("TAG", data.get(i).getTitle());
                     }
                     view.hideLoading();
-                    view.showData();
+                    view.showData(data);
                 }
 
                 @Override

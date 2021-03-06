@@ -1,4 +1,4 @@
-package com.example.retrofittesting;
+package mechanics.retrofit;
 
 
 import retrofit2.Retrofit;

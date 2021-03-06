@@ -39,10 +39,7 @@ public class AlbumsFragment extends Fragment implements AlbumsInterface {
 
     }
 
-    @Override
-    public void showData() {
 
-    }
 
     @Override
     public void showError(int errorStatus) {
