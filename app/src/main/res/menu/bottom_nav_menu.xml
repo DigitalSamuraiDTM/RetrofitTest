@@ -7,12 +7,12 @@
         android:title="@string/title_people" />
 
     <item
-        android:id="@+id/navigation_albums"
+        android:id="@+id/navigation_posts"
         android:icon="@drawable/ic_posts"
         android:title="@string/title_posts" />
 
     <item
-        android:id="@+id/navigation_posts"
+        android:id="@+id/navigation_albums"
         android:icon="@drawable/ic_albums"
         android:title="@string/title_albums" />
 

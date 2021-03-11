@@ -28,9 +28,6 @@ class PostsPresenter implements BasePresenterInterface {
                 @Override
                 public void onResponse(Call<List<PojoPostData>> call, Response<List<PojoPostData>> response) {
                     ArrayList<PojoPostData> data = (ArrayList<PojoPostData>) response.body();
-                    for (int i = 0; i < data.size(); i++) {
-                        Log.d("TAG", data.get(i).getTitle());
-                    }
                     view.hideLoading();
                     view.showData(data);
                 }
