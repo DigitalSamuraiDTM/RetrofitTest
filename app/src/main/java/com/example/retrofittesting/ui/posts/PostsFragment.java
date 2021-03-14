@@ -10,7 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.ActivityNavigator;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -90,6 +92,11 @@ public class PostsFragment extends Fragment implements PostsInterface {
         loadingLayout.setVisibility(View.GONE);
         loadingProgressBar.setVisibility(View.VISIBLE);
         textViewLoadingStatus.setVisibility(View.INVISIBLE);
+
+//        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),recyclerData, getString(R.string.trans_post_title));
+//        ActivityNavigator.Extras extras = new ActivityNavigator.Extras.Builder().setActivityOptions(optionsCompat).build();
+//        Navigation.findNavController(dataLayout).navigate(R.id.action_navigation_posts_to_selectedPostFragment,null,null,extras);
+
     }
 
     @Override
@@ -122,8 +129,8 @@ public class PostsFragment extends Fragment implements PostsInterface {
         recyclerData = (RecyclerView) getView().findViewById(R.id.fr_posts_recycler_posts_data);
 
         listData = new ArrayList<PojoPostData>();
-        NavController controller = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
-        PostsAdapter adapter = new PostsAdapter(getContext(),listData, controller);
+
+        PostsAdapter adapter = new PostsAdapter(getContext(),listData);
         recyclerData.setAdapter(adapter);
 
     }

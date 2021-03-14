@@ -1,0 +1,4 @@
+package selectedpost;
+
+class SelectedPostPresenter {
+}

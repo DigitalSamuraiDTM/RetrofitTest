@@ -6,4 +6,8 @@
     <string name="text_loading_status">:)</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="trans_post_title">tr_p1</string>
+    <string name="trans_post_post">tr_p2</string>
+    <string name="trans_post_date">tr_p3</string>
+    <string name="trans_post_obj1">tr_p4</string>
 </resources>

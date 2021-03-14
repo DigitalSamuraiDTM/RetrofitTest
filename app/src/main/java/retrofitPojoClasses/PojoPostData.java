@@ -1,10 +1,13 @@
 package retrofitPojoClasses;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PojoPostData {
+public class PojoPostData implements Parcelable {
     @SerializedName("userId")
     @Expose
     private int userId;
@@ -24,6 +27,38 @@ public class PojoPostData {
         this.title = title;
         this.body = body;
     }
+
+    protected PojoPostData(Parcel in) {
+        userId = in.readInt();
+        id = in.readInt();
+        title = in.readString();
+        body = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(userId);
+        dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(body);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<PojoPostData> CREATOR = new Creator<PojoPostData>() {
+        @Override
+        public PojoPostData createFromParcel(Parcel in) {
+            return new PojoPostData(in);
+        }
+
+        @Override
+        public PojoPostData[] newArray(int size) {
+            return new PojoPostData[size];
+        }
+    };
 
     public int getUserId() {
         return userId;

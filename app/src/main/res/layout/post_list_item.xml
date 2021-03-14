@@ -15,7 +15,8 @@
         android:layout_marginTop="20dp"
         android:text="sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:transitionName="@string/trans_post_title" />
 
     <TextView
         android:id="@+id/post_text_body"
@@ -26,7 +27,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:transitionName="@string/trans_post_post" />
 
     <TextView
         android:id="@+id/post_text_date"
@@ -37,7 +39,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="11dp"
         android:text="01.01.2000"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:transitionName="@string/trans_post_date" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
@@ -48,7 +51,8 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
-        android:background="@color/ColorAccent" />
+        android:background="@color/ColorAccent"
+        android:transitionName="@string/trans_post_obj1" />
 
 
 </RelativeLayout>

@@ -1,7 +1,10 @@
 package com.example.retrofittesting.ui.posts;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +13,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
+import androidx.navigation.ActivityNavigator;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.retrofittesting.MainActivity;
+import com.example.retrofittesting.MainApplication;
 import com.example.retrofittesting.R;
 
 import java.util.List;
@@ -25,10 +32,8 @@ import retrofitPojoClasses.PojoPostData;
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
     private List<PojoPostData> data;
     private final LayoutInflater inflater;
-    private NavController controller;
-    PostsAdapter(Context context, List<PojoPostData> data, NavController controller){
+    PostsAdapter(Context context, List<PojoPostData> data){
         this.data = data;
-        this.controller = controller;
         this.inflater = LayoutInflater.from(context);
     }
     // возвращает холдер, который будет хранить данные по одному объекту
@@ -43,9 +48,11 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position)  {
         PojoPostData state = data.get(position);
+        holder.pojoPostData = state;
         holder.id = state.getId();
         holder.userId = state.getUserId();
         holder.textTitle.setText(state.getTitle());
+        holder.textTitle.setTransitionName(String.valueOf(R.string.trans_post_title)+position);
         holder.textBody.setText(state.getBody());
         holder.textDate.setText(RandomDate.getRandomDate());
     }
@@ -59,6 +66,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         TextView textTitle;
         TextView textBody;
         TextView textDate;
+        PojoPostData pojoPostData;
         int id;
         int userId;
 
@@ -78,20 +86,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         @SuppressLint("NonConstantResourceId")
         @Override
         public void onClick(View view) {
-            switch (view.getId()){
-                case R.id.post__main_lay:
-                    Log.d("TAG","Clicked lay: "+String.valueOf(userId));
-                    break;
-                case R.id.post_text_body:
-                    Log.d("TAG","Clicked textview: "+String.valueOf(userId));
-                    break;
-                case R.id.post_text_date:
-                    Log.d("TAG","Clicked date view: "+String.valueOf(id));
-                    break;
-            }
 
+            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.getActivity(),textTitle, (ViewCompat.getTransitionName(textTitle)+getAdapterPosition()));
+            ActivityNavigator.Extras extras = new ActivityNavigator.Extras.Builder().setActivityOptions(optionsCompat).build();
             NavController navigation = Navigation.findNavController(view);
-            navigation.navigate(R.id.action_navigation_posts_to_selectedPostFragment);
+            Bundle bundle = new Bundle();
+
+            bundle.putParcelable("post", pojoPostData);
+
+            navigation.navigate(R.id.action_navigation_posts_to_selectedPostFragment,bundle,null,extras);
+
         }
     }
 }
