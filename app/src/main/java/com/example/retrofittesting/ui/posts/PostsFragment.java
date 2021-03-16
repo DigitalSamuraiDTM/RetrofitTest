@@ -1,12 +1,14 @@
 package com.example.retrofittesting.ui.posts;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -47,6 +49,10 @@ public class PostsFragment extends Fragment implements PostsInterface {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         initView();
+
+
+
+
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -57,6 +63,7 @@ public class PostsFragment extends Fragment implements PostsInterface {
 
     @Override
     public void onDestroy() {
+        presenter = null;
         super.onDestroy();
     }
 
@@ -73,7 +80,7 @@ public class PostsFragment extends Fragment implements PostsInterface {
 
     @Override
     public void onDetach() {
-        presenter = null;
+
         super.onDetach();
     }
 

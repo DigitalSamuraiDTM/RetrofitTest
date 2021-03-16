@@ -16,18 +16,26 @@ import retrofitPojoClasses.PojoPostData;
 
 class PostsPresenter implements BasePresenterInterface {
     PostsInterface view;
+    private ArrayList<PojoPostData> data = null;
     PostsPresenter(PostsInterface view){
         this.view = view;
     }
 
     @Override
     public void showData() {
+        if ((data !=null)) {
+            if (!data.isEmpty()) {
+                view.hideLoading();
+                view.showData(data);
+                return;
+            }
+        }
         view.showLoading();
         if (InternetAccess.isConnected()) {
             RetrofitService.getInstance().getJSONApi().getPosts().enqueue(new Callback<List<PojoPostData>>() {
                 @Override
                 public void onResponse(Call<List<PojoPostData>> call, Response<List<PojoPostData>> response) {
-                    ArrayList<PojoPostData> data = (ArrayList<PojoPostData>) response.body();
+                    data = (ArrayList<PojoPostData>) response.body();
                     view.hideLoading();
                     view.showData(data);
                 }
